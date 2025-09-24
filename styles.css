@@ -3,6 +3,9 @@
 import a font later
 
 */
+
+/* left off on 1:19:44 time to add animations! */
+
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 *{
     padding:0;
@@ -16,6 +19,24 @@ import a font later
 Styles multiple elements throughout the page
 
 */
+
+html{
+    scroll-behavior: smooth;
+}
+.link__hover-effect:after{
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 0;
+    bottom:-3px;
+    right: 0;
+    background-color: lightcoral;
+    transition: all 0.3s ease;
+}
+.link__hover-effect:hover:after{
+    left:0; 
+    width: 100%;
+}
 
 h1, h2, h3, h4, h5, h6{
   color: #242424;
@@ -32,7 +53,7 @@ p{
 li{
   list-style: none;
 }
-span{ color: #6030b1;}
+.purple-text{ color: #6030b1;}
 
 .flex-1{
     flex: 1;
@@ -54,6 +75,10 @@ section:nth-child(even){
 .section-title{
     margin-bottom: 24px;
 }
+a{
+    text-decoration: none;
+    position: relative;
+}
 /*
 
 NAVIGATION BAR
@@ -74,7 +99,6 @@ nav{
     display: flex;
 }
 .nav__link--anchor{
-    text-decoration: none;
     color: #242424;
     font-weight: bold;
     padding: 0px 12px;
@@ -178,7 +202,8 @@ LANGUAGES
   max-width: 100px;
   transition: all 0.3s ease;
 }
-.language__img:hover{filter: drop-shadow(3px 12px 24px rgb(138, 25, 95));
+.language__img:hover
+{filter: drop-shadow(3px 12px 24px rgb(138, 25, 95));
   transform: scale(1.2);
   opacity: 0.8;}
 
@@ -189,10 +214,218 @@ LANGUAGES
 }
 .language__name{
     position: absolute;
-    bottom: -30px;
+    bottom: -35px;
     transform:scale(0%);
     transition: all 0.3s ease; 
     font-size: 20px;
     opacity: 0%;
+    padding-top: 8px;
 }
-/* left off on 34:23 */
+/*
+
+PROJECTS
+
+*/
+.project__img{
+    width: 100%;
+    transition: all 0.3s ease;
+}
+.project-wrapper{
+    display: flex;
+    box-shadow:  5px 20px 50px hsl(0, 34%, 65%);
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+.project-wrapper:before{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color:  #1c1d25;
+    opacity: 0;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+.project:hover .project-wrapper:before{
+    opacity: 0.7;
+}
+.project:hover .project__img{
+    transform: scale(1.07);
+    filter: blur(2px);
+}
+.project:hover .project__desc{
+    opacity: 1;
+    transition: all 0.3s ease;
+    transform: translateY(-50%);
+}
+.project__list{
+    padding: 0 20px;
+}
+.project__desc{
+    position: absolute;
+    top: 50%;
+    left: 90px;
+    max-width: 550px;
+    
+    z-index: 3;
+    opacity: 0;
+    transition: all 0.3s ease;
+
+}
+.project__desc--title,
+.project__desc--sub-title,
+.project__desc--text,
+.project__desc--link{
+    color: white;
+    margin-bottom: 12px;
+    text-align: left;
+}
+.project{ 
+    margin: 150px 0;
+}
+.project:last-child{
+    margin-bottom: 40px;
+}
+/*
+
+FOOTER
+
+*/
+footer{
+    background-color: #242424;
+    color: white;
+    text-align: center;
+    padding: 24px 0;
+}
+.footer__logo{
+    height: 70px;
+    width: 70px;
+    border-radius: 35px;
+}
+.footer-row{
+    padding: 6% 0;
+}
+.footer__social--list{
+    display: flex;
+    justify-content: space-around;
+
+}
+.footer__social--link, .footer__logo--pop-up{
+    color: white;
+}
+.footer__logo--container{
+    margin-bottom: 24px;
+}
+.back-to-top{
+    position: relative;
+}
+.back-to-top:hover .footer__logo--pop-up{
+    opacity: 1;
+    transform: translateX(50px) ;
+    transition: all 0.3s ease;
+}
+.footer__logo--pop-up{
+    position: absolute;
+    top: 30px;
+    font-weight: bold;
+    opacity: 0;
+}
+/*
+
+MEDIA QUERIES
+
+*/
+
+@media (max-width: 768px){
+    nav{
+        flex-direction: column;
+        height: auto;
+        padding: 20px 0;
+    }
+    .nav__links--list{
+        margin-top: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    .about-me__info-container{
+        flex-direction: column;
+        align-items: center;
+        margin: 0 20px;
+    }
+    .about-me__img--container{
+        margin-top: 24px;
+    }
+    .about-me__info--text{
+        font-size: 18px;
+    }
+    .about-me__social-links{
+        display: flex;
+        justify-content: space-around;
+    }
+    .about-me__social-link{
+        padding: 0 30px;  
+    }
+    .project__desc{
+        left: 50px;
+        max-width: 400px;
+    }
+    .row{
+        padding: 0 20px;
+    }
+    .project__desc--text{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px){
+    .nav__links:not(:last-child){
+        display: none;
+    }
+    #about-me__info--title{
+        font-size: 24px;
+    }
+    .personal__logo{
+        font-size: 20px;
+        margin: 0 6px;
+    }
+    .about-me__picture--mask{
+        width: 150px;
+        height: 150px;
+    }
+    .about-me__img--container{
+        margin-top: 12px;
+    }
+    .about-me__img{
+        max-width: 300px;
+    }
+    .about-me__info--text{
+        font-size: 16px;
+        text-align: center;
+    }
+    .languages__icons--wrapper{
+        gap: 40px;
+    }
+    .language__img{
+        max-width: 80px;
+    }
+    .language__name{
+        font-size: 16px;
+        bottom: -30px;
+    }
+    .project__desc{
+        left: 20px;
+        max-width: 300px;
+    }
+    .project__desc--title{
+        font-size: 18px;
+    }
+    .project__desc--sub-title{
+        font-size: 14px;
+    }
+    .project__desc--text{
+        font-size: 12px;
+    }
+}

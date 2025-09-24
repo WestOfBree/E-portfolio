@@ -78,6 +78,10 @@ section:nth-child(even){
 a{
     text-decoration: none;
     position: relative;
+    transition: all 0.3s ease;
+}
+a:hover{
+    color: lightcoral;
 }
 /*
 
@@ -126,6 +130,36 @@ ABOUT ME
 
 */
 
+.sakura-1{
+    display: inline-block;
+animation: sakura-1-animation 800ms 0ms infinite ease-in-out;
+}
+@keyframes sakura-1-animation{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(-30deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
+.sakura-2{
+    display: inline-block;
+animation: sakura-2-animation 800ms 0ms infinite ease-in-out;
+}
+@keyframes sakura-2-animation{
+    0%{
+        transform: rotate(0deg);
+    }
+    50%{
+        transform: rotate(30deg);
+    }
+    100%{
+        transform: rotate(0deg);
+    }
+}
 #about-me{
     min-height: 100vh;
     display: flex;
@@ -149,6 +183,17 @@ ABOUT ME
     overflow: hidden;
     margin: 20px 0;
     box-shadow: hsl(0, 34%, 65%) 3px 12px 24px;
+    animation: profile-photo-animation 800ms 200ms backwards;
+}
+@keyframes profile-photo-animation{
+    0%{
+        transform: scale(0) rotate(0deg);
+        opacity: 0;
+    }
+    100%{
+        transform: scale(1) rotate(360deg);
+        opacity: 1;
+    }
 }
 .profile-photo{
     width: 100%;
@@ -157,14 +202,29 @@ ABOUT ME
 }
 #about-me__info--title{
     padding-bottom: 24px;
+    animation: fade-up 650ms 400ms backwards;
 }
 .about-me__info--text{
     font-size: 20px;
     margin-bottom: 24px;
+    animation: fade-up 650ms 500ms backwards;
+}
+.about-me__social-links{
+    animation: fade-up 650ms 600ms backwards
 }
 .about-me__social-link{
     font-size: 24px;
     padding: 0 40px 10px 40px;
+}
+@keyframes fade-up{
+    0%{
+        transform: translateY(40px);
+        opacity: 0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 .about-me__img--container{
     flex:1;
@@ -176,6 +236,15 @@ ABOUT ME
     max-width: 400px;
     margin: 0 auto;
     padding: 24px 0;
+    animation: fade-in 800ms 700ms backwards;
+}
+@keyframes fade-in{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
 }
 /*
 
